@@ -775,10 +775,10 @@ function generateBoard() {
 
        // Crear 2 fichas ganadoras y 2 perdedoras para esta hilera
        for (let i = 0; i < 2; i++) {
-           rowTiles.push({ value: 16000, revealed: false });  // Cambiado de 30000 a 16000
+           rowTiles.push({ value: 15000, revealed: false });  
        }
        for (let i = 0; i < 2; i++) {
-           rowTiles.push({ value: -15000, revealed: false }); // Cambiado de -30000 a -15000
+           rowTiles.push({ value: -16000, revealed: false }); 
        }
 
        // Mezclar las fichas dentro de esta hilera
@@ -802,7 +802,7 @@ function generateBoard() {
        }
    }
 
-   console.log(`Distribución de tablero: ${gainTiles} ganadoras (+16000), ${lossTiles} perdedoras (-15000)`);
+   console.log(`Distribución de tablero: ${gainTiles} ganadoras (+15000), ${lossTiles} perdedoras (-16000)`);
    console.log(`Fichas ganadoras por fila: Fila 1: ${distribution[0]}, Fila 2: ${distribution[1]}, Fila 3: ${distribution[2]}, Fila 4: ${distribution[3]}`);
 
    return tiles;
@@ -886,7 +886,7 @@ function verifyAndFixGameState() {
        // Si la ficha no existe o tiene valores inválidos, corregirla
        if (!gameState.board[i] || gameState.board[i].value === undefined) {
            gameState.board[i] = {
-               value: (Math.random() > 0.5 ? 16000 : -15000), // Cambiar valores
+               value: (Math.random() > 0.5 ? 15000 : -16000), // Cambiar valores
                revealed: false
            };
            fichasCorregidas++;
@@ -2074,10 +2074,10 @@ io.on('connection', (socket) => {
        }
 
        // Asegurarse de que los valores de punto son precisamente los esperados
-       if (gameState.board[tileIndex].value !== 16000 && gameState.board[tileIndex].value !== -15000) {
+       if (gameState.board[tileIndex].value !== 15000 && gameState.board[tileIndex].value !== -16000) {
            console.error(`VALOR DE FICHA INCORRECTO: ${gameState.board[tileIndex].value}`);
            // Corregir el valor
-           gameState.board[tileIndex].value = gameState.board[tileIndex].value > 0 ? 16000 : -15000;
+           gameState.board[tileIndex].value = gameState.board[tileIndex].value > 0 ? 15000 : -16000;
        }
 
        // Obtener o inicializar selecciones del jugador
