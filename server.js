@@ -298,8 +298,8 @@ let saveTimeout = null;
 const corsOptions = {
     origin: process.env.NODE_ENV === 'production'
         ? [
-            process.env.CLIENT_URL || 'https://juegomemoriacliente3-yk6i.onrender.com',
-            'https://juegomemoriacliente3-yk6i.onrender.com' // Sin la barra al final
+            process.env.CLIENT_URL || '',
+            '' // Sin la barra al final
         ]
         : ['http://localhost:3000'],
     methods: ['GET', 'POST'],
